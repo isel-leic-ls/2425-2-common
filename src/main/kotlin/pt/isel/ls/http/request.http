@@ -1,0 +1,19 @@
+GET http://localhost:8080/date
+
+###
+GET http://localhost:8080/students
+Accept: application/json
+
+###
+GET http://localhost:8080/students/20
+Accept: application/json
+
+###
+POST http://localhost:8080/students
+Content-Type: application/json
+
+{
+    "name": "Pedro Pereira",
+    "number": 5
+}
+

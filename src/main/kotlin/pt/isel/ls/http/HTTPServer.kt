@@ -2,8 +2,6 @@ package pt.isel.ls.http
 
 import kotlinx.datetime.Clock
 import kotlinx.serialization.Serializable
-import kotlinx.serialization.decodeFromString
-import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
 import org.http4k.core.Method.GET
 import org.http4k.core.Method.POST
@@ -18,7 +16,7 @@ import org.http4k.server.Jetty
 import org.http4k.server.asServer
 import org.slf4j.LoggerFactory
 
-private val logger = LoggerFactory.getLogger("pt.isel.ls.http.HTTPServer")
+private val logger = LoggerFactory.getLogger("HTTPServer")
 
 @Serializable
 data class Student(val name: String, val number: Int)
@@ -74,14 +72,13 @@ fun logRequest(request: Request) {
 fun main() {
     val studentRoutes =
         routes(
-            "students" bind GET to ::getStudents,
-            "students/{number}" bind GET to ::getStudent,
-            "students" bind POST to ::postStudent,
+            "/" bind GET to ::getStudents,
+            "/{number}" bind GET to ::getStudent,
+            "/" bind POST to ::postStudent,
         )
-
     val app =
         routes(
-            studentRoutes,
+            "students" bind studentRoutes,
             "date" bind GET to ::getDate,
         )
 
