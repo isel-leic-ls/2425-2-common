@@ -9,9 +9,11 @@ import org.http4k.core.Request
 import org.http4k.core.Response
 import org.http4k.core.Status.Companion.CREATED
 import org.http4k.core.Status.Companion.OK
+import org.http4k.routing.ResourceLoader
 import org.http4k.routing.bind
 import org.http4k.routing.path
 import org.http4k.routing.routes
+import org.http4k.routing.singlePageApp
 import org.http4k.server.Jetty
 import org.http4k.server.asServer
 import org.slf4j.LoggerFactory
@@ -80,9 +82,10 @@ fun main() {
         routes(
             "students" bind studentRoutes,
             "date" bind GET to ::getDate,
+            singlePageApp(ResourceLoader.Directory("static-content")),
         )
 
-    val jettyServer = app.asServer(Jetty(8080)).start()
+    val jettyServer = app.asServer(Jetty(9000)).start()
     logger.info("server started listening")
 
     readln()
