@@ -6,8 +6,10 @@ package pt.isel.ls.utils
  * @param b the second operand.
  * @return the greatest of the two integer operands.
  */
-fun max(a: Int, b: Int): Int =
-    if (a >= b) a else b
+fun max(
+    a: Int,
+    b: Int,
+): Int = if (a >= b) a else b
 
 /**
  * Looks for an integer in an sub-array and returns its index, if found.
@@ -19,7 +21,12 @@ fun max(a: Int, b: Int): Int =
  * @return the index of an occurrence of {@code n}, if {@code n} exists in the sub-array;
  * -1 otherwise.
  */
-fun indexOfBinary(a: IntArray, fromIndex: Int, toIndex: Int, n: Int): Int {
+fun indexOfBinary(
+    a: IntArray,
+    fromIndex: Int,
+    toIndex: Int,
+    n: Int,
+): Int {
     require(fromIndex <= toIndex) { "from($fromIndex) > to($toIndex)" }
     var low = fromIndex
     var high = toIndex - 1
