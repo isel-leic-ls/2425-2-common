@@ -103,6 +103,7 @@ fun main() {
         routes(
             "students" bind studentRoutes,
             "date" bind GET to ::getDate,
+            "postgres/students" bind GET to ::getStudentsFromPostgres,
             singlePageApp(ResourceLoader.Directory("static-content")),
         )
 
