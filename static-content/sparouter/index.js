@@ -22,7 +22,7 @@ function hashChangeHandler(){
 
     const mainContent = document.getElementById("mainContent")
     const path =  window.location.hash.replace("#", "")
-    
+
     const handler = router.getRouteHandler(path)
     handler(mainContent)
 }
