@@ -12,16 +12,22 @@ function loadHandler(){
     router.addRouteHandler("home", handlers.getHome)
     router.addRouteHandler("students", handlers.getStudents)
     router.addRouteHandler("students/create", handlers.createStudent)
-    router.addRouteHandler("students/10", handlers.getStudent)
+    router.addRouteHandler("students/{id}", handlers.getStudent)
     router.addDefaultNotFoundRouteHandler(() => window.location.hash = "home")
 
     hashChangeHandler()
 }
 
+//path
+//students/10 -> getStudent
+//student/11 -> getStudent
+
 function hashChangeHandler(){
 
     const mainContent = document.getElementById("mainContent")
     const path =  window.location.hash.replace("#", "")
+
+    //students
 
     const handler = router.getRouteHandler(path)
     handler(mainContent)
